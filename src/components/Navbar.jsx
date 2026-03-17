@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NAV_LINKS, BRAND } from '../data/navigation';
 
-function Navbar() {
+function Navbar({ theme, toggleTheme }) {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
@@ -39,9 +39,27 @@ function Navbar() {
                             </li>
                         ))}
                     </ul>
-                    <a href="#demo" className="btn btn--primary btn--sm navbar__cta">
-                        預約 Demo
-                    </a>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                        <button 
+                            onClick={toggleTheme} 
+                            aria-label="切換深淺色主題"
+                            style={{
+                                background: 'transparent',
+                                border: 'none',
+                                cursor: 'pointer',
+                                fontSize: '1.25rem',
+                                color: 'var(--color-text)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                            }}
+                        >
+                            {theme === 'light' ? '🌙' : '☀️'}
+                        </button>
+                        <a href="#demo" className="btn btn--primary btn--sm navbar__cta">
+                            預約 Demo
+                        </a>
+                    </div>
                 </nav>
             </div>
         </header>
